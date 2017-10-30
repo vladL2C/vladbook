@@ -1,15 +1,28 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+<section class="hero is-info">
+  <div class="hero-body">
+    <div class="container">
+      <div class="column is-half is-offset-one-quarter">
+      <h1 class="title">
+        Log in
+      </h1>
+      <h2 class="subtitle">
+        log in to your account
+      </h2>
+      
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <div class="control">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <%= f.email_field :email, autofocus: true, class: "input is-primary" %>
+      </div>
+    </div>  
 
   <div class="field">
+      <div class="control">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <%= f.password_field :password, autocomplete: "off", class: "input is-primary" %>
+      </div>
+  </div>    
 
   <% if devise_mapping.rememberable? -%>
     <div class="field">
@@ -19,8 +32,13 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class: "button is-primary" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
+    </div>
+  </div>
+</section>
+
