@@ -13,6 +13,12 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
   test "about path" do 
     get about_path 
-    assert_response :success 
-  end   
+    assert_response :success
+  end
+
+  test "feed path" do 
+    get feed_path
+    assert_redirected_to new_user_session_path
+  end  
+    
 end
