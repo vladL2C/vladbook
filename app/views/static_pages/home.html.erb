@@ -19,9 +19,19 @@
   </div>
 </section>
 <% else %>
-<div class="columns">
-  <div class="column is-three-fifths">Some Text</div>
-  <div class="column">Some more text</div>
-  <div class="column"><%= render 'forms/signup' %></div>
-</div>
+<section class="hero is-info">
+  <div class="hero-body">
+    <div class="container">
+      <div class="column is-half is-offset-one-quarter">
+      <h1 class="title">
+        Sign up
+      </h1>
+      <h2 class="subtitle">
+        sign up for an account right now
+      </h2>
+        <%= render 'forms/signup' %>    
+      </div>
+    </div>
+  </div>
+</section>
 <% end %>

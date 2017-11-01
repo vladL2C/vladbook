@@ -13,7 +13,8 @@ gem 'faker',        '1.7.3'
 gem "bulma-rails", "~> 0.6.0"
 gem 'devise'
 gem "font-awesome-rails"
- 
+gem 'carrierwave',             '1.1.0'
+gem 'mini_magick',             '4.7.0'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
