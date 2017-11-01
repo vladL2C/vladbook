@@ -1,6 +1,11 @@
+
 <%= form_for(@avatar, url: photos_path) do |f| %>
   <%= f.submit "Post", class: "btn btn-primary" %>
   <span class="picture">
     <%= f.file_field :picture %>
   </span>
 <% end %>
+
+<%= image_tag @avatar.picture %>
+
+

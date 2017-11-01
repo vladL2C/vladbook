@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   before_action :correct_user, only: :profile
 
   def profile
-  	#@avatar = current_user.build_avatar
+    if current_user.avatar.nil?
+      @avatar = current_user.build_avatar
+    else   
+      @avatar = current_user.avatar
+    end 
   end
 
   private 
