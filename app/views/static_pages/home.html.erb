@@ -1,5 +1,27 @@
+<% if user_signed_in? %>
+  <section class="hero is-primary is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Welcome <%= current_user.name %>
+      </h1>
+      <h2 class="subtitle">
+        <%= link_to feed_path do %>
+        <i class="fa fa-newspaper-o fa-lg" aria-hidden="true"> The feed - click here to see...</i>
+        <% end %>
+      </h2>
+      <h2 class="subtitle">
+        <%= link_to profile_path(current_user) do %>
+        <i class="fa fa-user fa-lg" aria-hidden="true"> My Profile - click here to go to your profile...</i>
+        <% end %>
+      </h2>
+    </div>
+  </div>
+</section>
+<% else %>
 <div class="columns">
   <div class="column is-three-fifths">Some Text</div>
   <div class="column">Some more text</div>
   <div class="column"><%= render 'forms/signup' %></div>
 </div>
+<% end %>
