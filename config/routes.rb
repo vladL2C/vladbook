@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/about', to: 'static_pages#about'
   get '/feed', to: 'static_pages#feed'
   get '/profile/:id', to: 'users#profile', as: :profile
-  resources :photos, only: [:create]
+  resources :photos 
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

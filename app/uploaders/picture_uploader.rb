@@ -1,4 +1,6 @@
 class PictureUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MiniMagick
+  process resize_to_limit: [400, 400]
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -21,6 +23,11 @@ class PictureUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
+
+  # Add a white list of extensions which are allowed to be uploaded.
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end 
 
   # Process files as they are uploaded:
   # process scale: [200, 300]

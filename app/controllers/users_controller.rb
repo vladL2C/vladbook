@@ -9,6 +9,14 @@ class UsersController < ApplicationController
     end 
   end
 
+  def update
+    return redirect_to profile_path(current_user) if params[:photo].blank?
+    @avatar = current_user.avatar 
+    if @avatar.update_attributes(avatar_params)
+      redirect_to profile_path(current_user)
+    end
+  end 
+  
   private 
   def correct_user
     redirect_to(root_path) unless current_user.id == params[:id].to_i
