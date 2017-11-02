@@ -1,11 +1,20 @@
 
 <%= image_tag @avatar.picture %>
 
-<%= form_for(@avatar, url: photos_path) do |f| %>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+<% if user_has_avatar? %>
+<%= form_for(@avatar, url: photo_path) do |f| %>
+  <%= f.submit "Update Profile", class: "btn btn-primary" %>
   <span class="picture">
     <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
   </span>
+<% end %>
+<% else %>
+<%= form_for(@avatar, url: photo_path) do |f| %>
+  <%= f.submit "Set Photo", class: "btn btn-primary" %>
+  <span class="picture">
+    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+  </span>
+<% end %>
 <% end %>
   
 
@@ -17,3 +26,4 @@
     }
   });
 </script>
+
