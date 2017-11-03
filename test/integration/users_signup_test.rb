@@ -6,7 +6,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     get root_path
     assert_difference 'User.count', 1 do 
       post user_registration_path, params: { user: 
-        { name: "vlad", surname: "saraev", email: "vlad@hotmail.co.nz",
+        { name: "example", surname: "mate", email: "example@hotmail.co.nz",
          birth_date: "", password: "terminator", password_confirmation: "terminator" } }
     end
     assert_redirected_to home_path

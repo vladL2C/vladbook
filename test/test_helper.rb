@@ -8,4 +8,14 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  class ActionDispatch::IntegrationTest
+
+    #Log in as a particular user.
+    def log_in_as(user, password: 'password')
+      post user_session_path, params: { session: { email: user.email,
+                          password: password}}
+    end 
+
+  end 
 end
