@@ -8,15 +8,21 @@ class UsersController < ApplicationController
       @avatar = current_user.avatar
     end 
   end
-
-  def update
-    return redirect_to profile_path(current_user) if params[:photo].blank?
-    @avatar = current_user.avatar 
-    if @avatar.update_attributes(avatar_params)
-      redirect_to profile_path(current_user)
-    end
-  end 
   
+  def public_profile
+
+  end 
+
+  def find_user
+    if params[:name]
+      @users = User.where(name: params[:name])
+      if @users.empty?
+        flash[:warning] = "No user"
+        redirect_to search_path
+      end
+    end      
+  end 
+
   private 
   def correct_user
     redirect_to(root_path) unless current_user.id == params[:id].to_i

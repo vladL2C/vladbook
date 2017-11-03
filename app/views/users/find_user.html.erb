@@ -1,0 +1,17 @@
+<section class="hero is-medium is-info is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <div class="column is-half is-offset-one-quarter">
+      <h1 class="title">
+        <%= render 'search_form' %>
+      </h1>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+
+<% unless @users.nil? %>
+  <%= render partial: "users", collection: @users %>
+<% end %>
