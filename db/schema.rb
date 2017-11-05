@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101082402) do
+ActiveRecord::Schema.define(version: 20171104001852) do
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "request_id"
+    t.integer "requested_id"
+    t.boolean "accepted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "photos", force: :cascade do |t|
     t.integer "user_id"
@@ -22,7 +30,7 @@ ActiveRecord::Schema.define(version: 20171101082402) do
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "surname", default: "", null: false
-    t.datetime "birth_date"
+    t.datetime "birth_date", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
