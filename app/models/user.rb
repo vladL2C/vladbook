@@ -9,15 +9,20 @@ class User < ApplicationRecord
 
   #Friendship associations
   has_many :requesting_friends, class_name: "Friendship",
-  															foreign_key: "request_id",
-  															dependent: :destroy
+  foreign_key: "request_id", dependent: :destroy
+  #Requested Friends that have accepted
   has_many :accepted_friends, -> { where accepted: true }, class_name: "Friendship",
-  															foreign_key: "request_id",
-  															dependent: :destroy															
+  foreign_key: "request_id", dependent: :destroy
+
   has_many :requested_friends, class_name: "Friendship",
-  															foreign_key: "requested_id",
-  															dependent: :destroy
+  foreign_key: "requested_id", dependent: :destroy
+
   has_many :friendship_requested, through: :requesting_friends, source: :requested
   has_many :friendship_requests, through: :requested_friends, source: :request	
 	has_many :friends, through: :accepted_friends, source: :requested
+
+
+  def add_user(user)
+    friendship_requested << user 
+  end 
 end
