@@ -1,2 +1,23 @@
-<%= users.name %>
-<%= users.surname %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Add Friend</th>
+    </tr>
+      <tbody>
+    <tr>
+      <td><%= users.name %></td>
+      <td><%= users.surname %></td>
+      <td><%= form_for(current_user, url: friendships_path, method: :post) do |f| %>
+      	<%= hidden_field_tag :requested_id, users.id %>
+      	<%= f.submit "Add Friend", class: "button is-primary is-small" %>
+      	<% end %>
+
+      </td>	
+    </tr>
+
+  </tbody>
+  </thead>
+</table>
