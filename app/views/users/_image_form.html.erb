@@ -6,10 +6,10 @@
   </span>
 <% end %>
 <% else %>
-<%= form_for(@avatar, url: photo_path) do |f| %>
+<%= form_for(@avatar, url: photos_path) do |f| %>
   <%= f.submit "Set Photo", class: "btn btn-primary" %>
   <span class="picture">
-    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', required: true %>
   </span>
 <% end %>
 <% end %>

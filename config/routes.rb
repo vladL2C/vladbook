@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/search', to: 'users#find_user'
   resources :photos, only: [:create, :update] 
   resources :friendships, only: [:create]
+  delete 'friendship', to: 'friendships#destroy', as: :friendship
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -5,4 +5,8 @@ class FriendshipsController < ApplicationController
 		redirect_back(fallback_location: search_path)
 	end 
 
+  def destroy
+    current_user.cancle_add(User.find(params[:requested_id]))
+    redirect_back(fallback_location: search_path)
+  end 
 end
