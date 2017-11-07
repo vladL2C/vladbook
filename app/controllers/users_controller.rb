@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :correct_user, only: :profile
+  before_action :correct_user, except: [:public_profile, :find_user]
 
   def profile
     if current_user.avatar.nil?
@@ -8,10 +8,22 @@ class UsersController < ApplicationController
       @avatar = current_user.avatar
     end 
   end
-  
+
   def public_profile
 
-  end 
+  end
+
+  def friends
+
+  end
+
+  def sent_requests
+
+  end  
+  
+  def received_requests
+
+  end  
 
   def find_user
     if params[:name]
