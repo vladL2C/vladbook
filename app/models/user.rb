@@ -3,8 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  validates :name, presence: true 
-  validates :surname, presence: true
   has_one :avatar, class_name: "Photo", foreign_key: "user_id"  
 
   #Friendship associations
@@ -21,6 +19,13 @@ class User < ApplicationRecord
   has_many :friendship_requests, through: :requested_friends, source: :request, dependent: :destroy	
 	has_many :friends, through: :accepted_friends, source: :requested, dependent: :destroy
 
+  #Post associations
+  has_many :posts
+  has_many :comments
+
+  #Validations
+  validates :name, presence: true 
+  validates :surname, presence: true
 
   def add_user(user)
     friendship_requested << user 
