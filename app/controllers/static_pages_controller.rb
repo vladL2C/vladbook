@@ -6,5 +6,6 @@ class StaticPagesController < ApplicationController
   end
 
   def feed
+    @posts = Post.all
   end 
 end

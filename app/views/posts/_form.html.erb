@@ -8,20 +8,20 @@
     <div class="field">
       <div class="control">
         <%= form_for(:post, url: posts_path) do |f| %>
-          <%= f.text_area :content, size: "40x4" %> 
-      </div>
-    </div>
-    <nav class="level">
+          <%= f.text_area :content, size: "40x4", placeholder: "whats on your mind #{current_user.name}..." %>
+          <nav class="level">
       <div class="level-left">
         <div class="level-item">
           <%= f.submit "Post", class: "button is-info is-small" %>
+          <% end %>
         </div>
       </div>
       <div class="level-right">
         <div class="level-item">
         </div>
       </div>
-    </nav>
+    </nav> 
+      </div>
+    </div>
   </article>
 </div>
-    <% end %>

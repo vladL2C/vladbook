@@ -20,8 +20,11 @@ class User < ApplicationRecord
 	has_many :friends, through: :accepted_friends, source: :requested, dependent: :destroy
 
   #Post associations
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :comments
+
+  #likes associations
+  has_many :likes
 
   #Validations
   validates :name, presence: true 
