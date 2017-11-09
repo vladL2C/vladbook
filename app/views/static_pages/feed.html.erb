@@ -34,7 +34,13 @@
         <br>
         <%= post.content %>
         <br>
-        <small><a>Like</a> · <%= link_to "Delete", post_path(post), method: :delete %> · 3 hrs</small>
+        <small>
+          <% if liked_post?(post,current_user) %>
+          <%= link_to "Like", like_path(post.likes.where(user_id: current_user.id).first.id), method: :delete %>(<%= post.likes.count %>) 
+          <% else %>
+          <%= link_to "Like", likes_path(current_user: current_user.id, likable_id: post.id, likable_type: "Post"), method: :post %>(<%= post.likes.count %>) 
+          <% end %>
+            · <%= link_to "Delete", post_path(post), method: :delete %> · 3 hrs</small>
       </p>
     </div>
     <% post.comments.each do |comment| %>
@@ -51,7 +57,13 @@
             <br>
               <%= comment.content %>
             <br>
-            <small><a>Like</a> · <%= link_to "Delete", comment_path(comment), method: :delete %> · 2 hrs</small>
+            <small>
+          <% if liked_comment?(comment,current_user) %>
+          <%= link_to "Like", like_path(comment.likes.where(user_id: current_user.id).first.id), method: :delete %>(<%= comment.likes.count %>) 
+          <% else %>
+              <%= link_to "Like", likes_path(current_user: current_user.id, likable_id: comment.id, likable_type: "Comment"), method: :post %>(<%= comment.likes.count %>) 
+                <% end %>
+                · <%= link_to "Delete", comment_path(comment), method: :delete %> · 2 hrs</small>
           </p>
         </div>
       </div>
