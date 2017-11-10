@@ -6,6 +6,6 @@ class StaticPagesController < ApplicationController
   end
 
   def feed
-    @posts = Post.all
+      @posts = Post.includes(:user).includes(comments: [:user])
   end 
 end

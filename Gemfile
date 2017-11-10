@@ -16,6 +16,7 @@ gem "font-awesome-rails"
 gem 'carrierwave',             '1.1.0'
 gem 'mini_magick',             '4.7.0'
 
+
 group :development, :test do
   gem 'sqlite3', '1.3.13'
   gem 'byebug',  '9.0.6', platform: :mri
@@ -26,6 +27,7 @@ group :development do
   gem 'listen',                '3.0.8'
   gem 'spring',                '2.0.2'
   gem 'spring-watcher-listen', '2.0.1'
+  gem 'bullet'
 end
 
 group :test do

@@ -1,0 +1,27 @@
+ <article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img src="https://bulma.io/images/placeholders/128x128.png">
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong><%= post.user.name.capitalize %></strong>
+        <br>
+          <%= post.content %>
+        <br>
+        <small>  <% if liked_post?(post,current_user) %>
+          <%= link_to "Like", like_path(get_post_like_id(current_user,post)), method: :delete %>(<%= post.likes.count %>) 
+          <% else %>
+          <%= link_to "Like", likes_path(current_user: current_user.id, likable_id: post.id, likable_type: "Post"), method: :post %>(<%= post.likes.count %>) 
+          <% end %>
+            · <%= link_to "Delete", post_path(post), method: :delete %> · 3 hrs</small>
+      </p>
+    </div>
+    <%= render post.comments %>
+    <%= render partial: 'comments/comments_form', locals: {post_id: post.id} %>
+  </div>
+</article>
+
+
