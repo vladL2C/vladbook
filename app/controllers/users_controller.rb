@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :correct_user, except: [:public_profile, :find_user]
 
   def profile
+    @friend_requests = current_user.friendship_requests
     if current_user.avatar.nil?
       @avatar = current_user.build_avatar
     else   

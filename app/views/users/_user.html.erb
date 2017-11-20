@@ -7,17 +7,17 @@
     </tr>
       <tbody>
     <tr>
-      <td><%= users.name %></td>
-      <td><%= users.surname %></td>
+      <td><%= user.name %></td>
+      <td><%= user.surname %></td>
       <td>
-        <% if current_user.added?(users) %>
+        <% if current_user.added?(user) %>
           <%= form_for(current_user, url: friendship_path, method: :delete) do |f| %>
-        <%= hidden_field_tag :requested_id, users.id %>
+        <%= hidden_field_tag :requested_id, user.id %>
         <%= f.submit "Cancle Request", class: "button is-primary is-small" %>
         <% end %>
         <% else %>  
         <%= form_for(current_user, url: friendships_path, method: :post) do |f| %>
-      	<%= hidden_field_tag :requested_id, users.id %>
+      	<%= hidden_field_tag :requested_id, user.id %>
       	<%= f.submit "Add Friend", class: "button is-primary is-small" %>
       	<% end %>
         <% end %>

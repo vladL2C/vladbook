@@ -38,8 +38,12 @@ class User < ApplicationRecord
     friendship_requested.include?(user)
   end
 
+  def decline_request(user)
+    friendship_requests.destroy(user)
+  end 
+
   def cancle_add(user)
-    friendship_requested.delete(user)
+    friendship_requested.destroy(user)
   end
     
 end

@@ -74,49 +74,13 @@
                     <tbody>
                       <tr>
                         <td width="5%"><i class="fa fa-bell-o"></i></td>
-                        <td>John Hone</td>
+                        <% @friend_requests.each do |friend_request| %>
+                        <td><%= friend_request.name %> <%= friend_request.surname %>
+                        </td>
                         <td><a class="button is-small is-primary" href="#">Accept</a></td>
+                        <td><%= link_to "Decline", decline_path(request_id: friend_request.id), method: :delete, class: "button is-small is-primary" %></td>
                       </tr>
-                      <tr>
-                        <td width="5%"><i class="fa fa-bell-o"></i></td>
-                        <td>Dave Norris</td>
-                        <td><a class="button is-small is-primary" href="#">Accept</a></td>
-                      </tr>
-                      <tr>
-                        <td width="5%"><i class="fa fa-bell-o"></i></td>
-                        <td>Dick Fuck</td>
-                        <td><a class="button is-small is-primary" href="#">Accept</a></td>
-                      </tr>
-                      <tr>
-                        <td width="5%"><i class="fa fa-bell-o"></i></td>
-                        <td>Poo Head</td>
-                        <td><a class="button is-small is-primary" href="#">Accept</a></td>
-                      </tr>
-                      <tr>
-                        <td width="5%"><i class="fa fa-bell-o"></i></td>
-                        <td>Fucky McFuck</td>
-                        <td><a class="button is-small is-primary" href="#">Accept</a></td>
-                      </tr>
-                      <tr>
-                        <td width="5%"><i class="fa fa-bell-o"></i></td>
-                        <td>Dick Face</td>
-                        <td><a class="button is-small is-primary" href="#">Accept</a></td>
-                      </tr>
-                      <tr>
-                        <td width="5%"><i class="fa fa-bell-o"></i></td>
-                        <td>Duck Face</td>
-                        <td><a class="button is-small is-primary" href="#">Accept</a></td>
-                      </tr>
-                      <tr>
-                        <td width="5%"><i class="fa fa-bell-o"></i></td>
-                        <td>Poop More Poop</td>
-                        <td><a class="button is-small is-primary" href="#">Accept</a></td>
-                      </tr>
-                      <tr>
-                        <td width="5%"><i class="fa fa-bell-o"></i></td>
-                        <td>Malika Cockstar</td>
-                        <td><a class="button is-small is-primary" href="#">Accept</a></td>
-                      </tr>
+                      <% end %>
                     </tbody>
                   </table>
                 </div>
