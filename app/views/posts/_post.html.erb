@@ -16,7 +16,10 @@
           <% else %>
           <%= link_to "Like", likes_path(current_user: current_user.id, likable_id: post.id, likable_type: "Post"), method: :post %>(<%= post.likes.count %>) 
           <% end %>
-            · <%= link_to "Delete", post_path(post), method: :delete %> · 3 hrs</small>
+          <% if current_user == post.user %>
+            · <%= link_to "Delete", post_path(post), method: :delete %> · <%= time_ago_in_words(post.created_at) %> ago
+            <% end %>
+          </small>
       </p>
     </div>
     <%= render post.comments %>

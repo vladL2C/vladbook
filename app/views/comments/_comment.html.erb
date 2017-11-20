@@ -5,7 +5,7 @@
         </p>
       </figure>
       <div class="media-content">
-        <div class="content is-small">
+        <div class="content">
           <p>
             <strong><%= comment.user.name %></strong>
             <br>
@@ -16,7 +16,10 @@
           <% else %>
               <%= link_to "Like", likes_path(current_user: current_user.id, likable_id: comment.id, likable_type: "Comment"), method: :post %>(<%= comment.likes.count %>) 
                 <% end %>
-                · <%= link_to "Delete", comment_path(comment), method: :delete %> · 2 hrs</small>
+                <% if current_user == comment.user %>
+                · <%= link_to "Delete", comment_path(comment), method: :delete %> · <%= time_ago_in_words(comment.created_at) %> ago
+                <% end %>
+              </small>
           </p>
         </div>
       </div>
