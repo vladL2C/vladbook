@@ -1,4 +1,5 @@
 class FriendshipsController < ApplicationController
+	before_action :get_friendship, only: [:accept]
 
 	def create
 		current_user.add_user(User.find(params[:requested_id]))
@@ -16,5 +17,14 @@ class FriendshipsController < ApplicationController
   end 
 
   def accept
+  	@friendship.update_attribute(:accepted, true)
+  	redirect_back(fallback_location: profile_path(current_user))
   end 
+
+  private
+
+  def get_friendship
+  	@friendship = Friendship.find_by(requested_id: params[:requested_id], request_id: params[:request_id])
+  end 
+
 end

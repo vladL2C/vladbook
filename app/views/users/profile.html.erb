@@ -73,13 +73,17 @@
                   <table class="table is-fullwidth is-striped">
                     <tbody>
                       <tr>
-                        <td width="5%"><i class="fa fa-bell-o"></i></td>
                         <% @friend_requests.each do |friend_request| %>
+                        <% if not_accepted?(friend_request) %>
+                        <td width="5%"><i class="fa fa-bell-o"></i></td>
+                        
+                        
                         <td><%= friend_request.name %> <%= friend_request.surname %>
                         </td>
-                        <td><a class="button is-small is-primary" href="#">Accept</a></td>
+                        <td><%= link_to "Accept", accepts_path(requested_id: current_user.id, request_id: friend_request.id), method: :post, class: "button is-small is-primary" %></td>
                         <td><%= link_to "Decline", decline_path(request_id: friend_request.id), method: :delete, class: "button is-small is-primary" %></td>
                       </tr>
+                      <% end %>
                       <% end %>
                     </tbody>
                   </table>
